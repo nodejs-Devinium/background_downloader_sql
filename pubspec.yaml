@@ -1,6 +1,7 @@
 name: background_downloader_sql
 description: "Adds SQLite storage to background_downloader"
 version: 1.0.0
+repository: https://github.com/781flyingdutchman/background_downloader_sql
 
 environment:
   sdk: ^3.0.0
