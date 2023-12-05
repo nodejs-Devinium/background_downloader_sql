@@ -1,0 +1,23 @@
+name: background_downloader_sql
+description: "Adds SQLite storage to background_downloader"
+version: 1.0.0
+
+environment:
+  sdk: ^3.0.0
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  background_downloader: ^8.0.0
+  logging: ^1.0.2
+  path: ^1.8.1
+  path_provider: ^2.0.2
+  sqflite: ^2.2.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+
