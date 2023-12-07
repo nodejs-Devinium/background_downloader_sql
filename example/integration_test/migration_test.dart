@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:background_downloader/background_downloader.dart';
 import 'package:background_downloader_sql/background_downloader_sql.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_downloader/flutter_downloader.dart' as flutter_downloader;
+import 'package:flutter_downloader/flutter_downloader.dart'
+    as flutter_downloader;
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:logging/logging.dart';
@@ -281,7 +282,8 @@ Future<void> _migrateWithDir(Directory dir) async {
   expect(File(destPath).existsSync(), isTrue);
   expect(File(dbPath).existsSync(), isTrue);
   debugPrint('Loaded file, file exists, database exists');
-  final fdlTask = (await flutter_downloader.FlutterDownloader.loadTasks())!.first;
+  final fdlTask =
+      (await flutter_downloader.FlutterDownloader.loadTasks())!.first;
   expect(fdlTask.taskId, equals(fdlTaskId));
   debugPrint(
       'FDL SQLite database contains the task with status ${fdlTask.status}');

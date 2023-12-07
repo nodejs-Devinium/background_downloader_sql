@@ -283,10 +283,13 @@ class _MyAppState extends State<MyApp> {
       if (Platform.isIOS) {
         // add to photos library and print path
         // If you need the path, ask full permissions beforehand by calling
-        var auth = await FileDownloader().permissions.status(PermissionType.iosChangePhotoLibrary);
+        var auth = await FileDownloader()
+            .permissions
+            .status(PermissionType.iosChangePhotoLibrary);
         if (auth != PermissionStatus.granted) {
-          auth = await FileDownloader().permissions.request(
-              PermissionType.iosChangePhotoLibrary);
+          auth = await FileDownloader()
+              .permissions
+              .request(PermissionType.iosChangePhotoLibrary);
         }
         if (auth == PermissionStatus.granted) {
           final identifier = await FileDownloader()
@@ -335,7 +338,9 @@ class _MyAppState extends State<MyApp> {
   Future<void> getPermission(PermissionType permissionType) async {
     var status = await FileDownloader().permissions.status(permissionType);
     if (status != PermissionStatus.granted) {
-      if (await FileDownloader().permissions.shouldShowRationale(permissionType)) {
+      if (await FileDownloader()
+          .permissions
+          .shouldShowRationale(permissionType)) {
         debugPrint('Showing some rationale');
       }
       status = await FileDownloader().permissions.request(permissionType);
