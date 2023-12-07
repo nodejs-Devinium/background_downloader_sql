@@ -510,6 +510,8 @@ abstract class FlutterDownloaderPersistentStorage implements PersistentStorage {
   Future<(String, int)> get storedDatabaseVersion => throw UnimplementedError();
 }
 
+/// Partial implementation used to extract the data stored in a
+/// FlutterDownloader SQLite database, for migration
 class FlutterDownloaderPersistentStorageAndroid
     extends FlutterDownloaderPersistentStorage {
   @override
@@ -521,6 +523,8 @@ class FlutterDownloaderPersistentStorageAndroid
   }
 }
 
+/// Partial implementation used to extract the data stored in a
+/// FlutterDownloader SQLite database, for migration
 class FlutterDownloaderPersistentStorageIOS
     extends FlutterDownloaderPersistentStorage {
   @override
