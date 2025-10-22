@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  background_downloader: ^8.0.0
+  background_downloader: ^9.0.0
     # because background_downloader_sql is a companion to background_downloader
     # you need to add dependencies to both packages
   background_downloader_sql:
