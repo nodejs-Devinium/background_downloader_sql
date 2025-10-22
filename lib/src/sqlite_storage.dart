@@ -104,7 +104,7 @@ class SqlitePersistentStorage implements PersistentStorage {
         log.fine('Migrated database from $migratedFrom');
       }
     }
-    await purgeOldRecords();
+    // await purgeOldRecords();
     log.finest('Initialized SqlitePersistentStorage database at ${db.path}');
   }
 
@@ -429,32 +429,28 @@ abstract class FlutterDownloaderPersistentStorage implements PersistentStorage {
         headerString = Uri.decodeFull(headerString);
         headers = Map.castFrom(jsonDecode(headerString));
       }
-      var (baseDirectory, directory) =
-          await getDirectories(fdlTask['saved_dir'] as String? ?? '');
+      var savedDir = fdlTask['saved_dir'] as String? ?? '';
+      var (baseDirectory, directory) = await getDirectories(savedDir);
       final creationTime = DateTime.fromMillisecondsSinceEpoch(
           fdlTask['time_created'] as int? ?? 0);
-      if (directory != null) {
-        final task = DownloadTask(
-            taskId: fdlTask['task_id'] as String?,
-            url: fdlTask['url'] as String,
-            filename: fdlTask['file_name'] as String,
-            headers: headers,
-            baseDirectory: baseDirectory,
-            directory: directory,
-            updates: Updates.statusAndProgress,
-            creationTime: creationTime);
-        final (status, progress) = switch (fdlTask['status'] as int? ?? 0) {
-          3 => (TaskStatus.complete, progressComplete),
-          4 => (TaskStatus.failed, progressFailed),
-          5 => (TaskStatus.canceled, progressCanceled),
-          _ => (TaskStatus.failed, progressFailed)
-        };
-        final record = TaskRecord(task, status, progress, -1);
-        taskRecords.add(record);
-      } else {
-        log.fine(
-            'Could not parse saved_dir path ${fdlTask['saved_dir']}, skipping record');
-      }
+      final task = DownloadTask(
+          taskId: fdlTask['task_id'] as String?,
+          url: fdlTask['url'] as String,
+          filename: fdlTask['file_name'] as String,
+          headers: headers,
+          baseDirectory: baseDirectory,
+          // store original `saved_dir` as `directory` if we couldn't parse it
+          directory: directory ?? savedDir,
+          updates: Updates.statusAndProgress,
+          creationTime: creationTime);
+      final (status, progress) = switch (fdlTask['status'] as int? ?? 0) {
+        3 => (TaskStatus.complete, progressComplete),
+        4 => (TaskStatus.failed, progressFailed),
+        5 => (TaskStatus.canceled, progressCanceled),
+        _ => (TaskStatus.failed, progressFailed)
+      };
+      final record = TaskRecord(task, status, progress, -1);
+      taskRecords.add(record);
     }
     return taskRecords;
   }
