@@ -20,10 +20,11 @@ packages:
   background_downloader:
     dependency: "direct main"
     description:
-      name: background_downloader
-      sha256: a22acfa37aa06ba5cfe6eb7b1aa700c78af64770ff450c73dd3d279d7c37d4ac
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "96f2731f1c8a388b41c235be808a1309af559310"
+      resolved-ref: "96f2731f1c8a388b41c235be808a1309af559310"
+      url: "https://github.com/nodejs-Devinium/background_downloader.git"
+    source: git
     version: "9.2.6"
   background_downloader_sql:
     dependency: "direct main"
