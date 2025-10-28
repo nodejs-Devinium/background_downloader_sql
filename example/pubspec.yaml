@@ -31,7 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  background_downloader: ^9.0.0
+  background_downloader:
+    git:
+      url: https://github.com/nodejs-Devinium/background_downloader.git
+      ref: bd271c9bd370cc6a2e0f4c09c8e07ea2672e9c8b # commit
     # because background_downloader_sql is a companion to background_downloader
     # you need to add dependencies to both packages
   background_downloader_sql:
