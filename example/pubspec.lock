@@ -21,11 +21,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "96f2731f1c8a388b41c235be808a1309af559310"
-      resolved-ref: "96f2731f1c8a388b41c235be808a1309af559310"
+      ref: cc47cfa95d9eaa1786be635312bd6207cac81cdb
+      resolved-ref: cc47cfa95d9eaa1786be635312bd6207cac81cdb
       url: "https://github.com/nodejs-Devinium/background_downloader.git"
     source: git
-    version: "9.2.6"
+    version: "9.4.0"
   background_downloader_sql:
     dependency: "direct main"
     description:

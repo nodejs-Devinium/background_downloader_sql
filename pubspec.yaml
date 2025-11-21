@@ -14,7 +14,7 @@ dependencies:
   background_downloader:
     git:
       url: https://github.com/nodejs-Devinium/background_downloader.git
-      ref: 96f2731f1c8a388b41c235be808a1309af559310 # commit
+      ref: cc47cfa95d9eaa1786be635312bd6207cac81cdb # commit
   logging: ^1.0.2
   path: ^1.8.1
   path_provider: ^2.0.2
